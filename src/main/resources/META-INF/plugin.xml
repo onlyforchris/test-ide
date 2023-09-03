@@ -1,0 +1,56 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.min.plugin</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>TEST IDE</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="onlyforchris@gmail.com" url="https://github.com/onlyforchris">Chris</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+        Enter short description for your plugin here
+    </description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- 添加 StartupActivity 扩展 -->
+<!--        <startupActivity implementation="com.min.plugin.components.MyPluginApplication" />-->
+        <projectManagerListener implementation="com.example.MyProjectManagerListener"/>
+
+        <toolWindow id="BrowserToolWindow" anchor="bottom" secondary="false" factoryClass="com.min.plugin.toolwindow.BrowserToolWindowFactory"/>
+    </extensions>
+
+
+
+    <actions>
+        <!-- 定义自定义分组 -->
+        <group id="MyToolbarGroup" text="My Toolbar Group" />
+
+        <action id="org.example.ToggleBrowserAction"
+                class="com.min.plugin.action.ToggleBrowserAction"
+                text="Toggle Browser"
+                description="Enable/Disable the browser" icon="icon/pluginIcon.svg">
+            <add-to-group group-id="MyToolbarGroup" anchor="first" />
+        </action>
+
+
+        <action id="CallSpringBootAction" class="com.min.plugin.action.CallSpringBootAction" text="Call Spring Boot Action"
+                description="Call Spring Boot Action" icon="AllIcons.General.Web">
+        <add-to-group group-id="EditorPopupMenu" anchor="first"  />
+        </action>
+
+
+
+    </actions>
+
+</idea-plugin>

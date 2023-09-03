@@ -1,0 +1,63 @@
+这是我的项目结构：
+1、ide-web是一个springboot提供了web接口，未来需要增加前端页面；
+2、src目录下是插件的主要操作：提供插件的基本功能
+需要在安装插件后，用户打开IDEA，ide-web能够自动启动，因为这个插件需要访问ide-web的页面和请求接口
+你还需要知道什么信息？
+.
+├── gradlew
+├── gradlew.bat
+├── ide-web
+│   ├── build.gradle
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── min
+│       │   │           ├── IDEWebApplication.java
+│       │   │           └── controller
+│       │   │               └── SampleController.java
+│       │   └── resources
+│       │       ├── META-INF
+│       │       └── application.properties
+│       └── test
+│           ├── java
+│           └── resources
+├── project_structure.txt
+├── settings.gradle
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── min
+    │   │           └── plugin
+    │   │               ├── action
+    │   │               │   ├── CallSpringBootAction.java
+    │   │               │   └── ToggleBrowserAction.java
+    │   │               ├── browser
+    │   │               │   ├── Browser.java
+    │   │               │   ├── BrowserView.java
+    │   │               │   ├── BrowserWindowFactory.java
+    │   │               │   ├── JcefBrowser.java
+    │   │               │   ├── MyBrowserView.java
+    │   │               │   └── MyBrowserViewSingleton.java
+    │   │               ├── components
+    │   │               │   ├── MyPluginApplication.java
+    │   │               │   ├── MyPluginApplicationComponent.java
+    │   │               │   └── MyPluginApplicationStarter.java
+    │   │               ├── config
+    │   │               │   ├── MyPluginConfigurable.java
+    │   │               │   └── MyPluginSettings.java
+    │   │               ├── listener
+    │   │               │   └── MyProjectManagerListener.java
+    │   │               └── toolwindow
+    │   │                   └── BrowserToolWindowFactory.java
+    │   └── resources
+    │       ├── META-INF
+    │       │   ├── plugin.xml
+    │       │   └── pluginIcon.svg
+    │       ├── enableJcefPage.xml
+    │       └── icon
+    │           └── pluginIcon.svg
+    └── test
+        ├── java
+        └── resources

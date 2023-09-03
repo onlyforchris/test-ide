@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.7.3'
+    // https://blog.csdn.net/wl1411956542/article/details/129715175
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+intellij {
+    version = '2020.2'
+    plugins = ['java']
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+wrapper {
+// https://services.gradle.org/distributions/
+//    gradleVersion = '8.0' // // jdk17 build无法自动装配
+//    gradleVersion = '7.6.2' // jdk17 打包有问题
+//    gradleVersion = '7.6.1' // jdk17 build无法自动装配
+//    gradleVersion = '7.6' // jdk17 build无法自动装配
+//    gradleVersion = '7.5.1' // jdk17 与jdk不匹配
+//    gradleVersion = '6.9' // jdk11 build无法自动装配
+    gradleVersion = '6.8' // jdk11
+//    gradleVersion = '4.10' // jdk8
+
+}
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/central/'}
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/google/' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter/'}
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin'}
+    maven { url 'https://jitpack.io' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':ide-web')
+    implementation 'org.springframework.boot:spring-boot:2.5.5'
+    implementation 'org.springframework:spring-context:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-starter:2.5.5'
+}
+
+tasks.register('setupDependencies') {
+    doLast {
+        // 在此处定义任务的操作
+        println "Setting up dependencies..."
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType(Javadoc).configureEach {
+    options.encoding = 'UTF-8'
+}
